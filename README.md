@@ -1,8 +1,8 @@
 # Portcheck
 
-This is a simple service to easily check if your port is open to the internet.
+This is a simple service to easily check if your port is open to the internet. It has Recaptcha, ratelimits, Cloudflare support, logging (+ rollover with compression), ability to restrict ports (comes with a default list)
 
-It has Recaptcha, ratelimits, Cloudflare support, logging (+ rollover with compression), ability to restrict ports (comes with a default list)
+You can access a live instance at https://portcheck.komodai.com
 
 # Setup
 
