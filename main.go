@@ -141,7 +141,6 @@ func resetRateLimits() {
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "www/index.html")
-	logPortCheck("63.251.25.190", 8080, true)
 }
 
 func checkHandler(w http.ResponseWriter, r *http.Request) {
