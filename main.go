@@ -105,7 +105,7 @@ var (
 	logFileSizeMB      = 10
 	logFile            *os.File
 	logFilePath        = "portcheck.log"
-	useCloudflare      = true            // ONLY SET IT TO TRUE IF YOU ARE USING CLOUDFLARE
+	useCloudflare      = false           // ONLY SET IT TO TRUE IF YOU ARE USING CLOUDFLARE
 	rateLimitThreshold = 5               // ratelimit requests trigger
 	rateLimitDuration  = 5 * time.Minute // rate limit reset time
 )
@@ -260,7 +260,6 @@ func rotateLog() {
 		fmt.Println("Error deleting uncompressed log file:", err)
 	}
 
-	// Setup logger again
 	setupLogger()
 }
 
@@ -289,7 +288,6 @@ func compressLogFile(filePath string) {
 }
 
 func validateCaptcha(response string) bool {
-	// Form POST request to Google reCAPTCHA API
 	postData := url.Values{
 		"secret":   {reCAPTCHASecret},
 		"response": {response},
