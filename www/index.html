@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Port Checker</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+
+<body>
+    <h1>Port Checker</h1>
+    <form id="portForm">
+        <label for="port">Enter Port Number:</label>
+        <input type="number" id="port" name="port" required min="1" max="65535">
+        <div class="g-recaptcha" data-sitekey=""></div> <!-- REPLACE WITH YOUR OWN -->
+        <button type="submit">Check Port</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById("portForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            var form = event.target;
+            var formData = new FormData(form);
+
+            fetch("/check", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.text())
+            .then(result => {
+                document.getElementById("result").innerText = result;
+		grecaptcha.reset();
+            })
+            .catch(error => {
+                console.error("Error:", error);
+		grecaptcha.reset();
+            });
+        });
+    </script>
+</body>
+
+</html>
