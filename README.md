@@ -14,8 +14,8 @@ You can try it out live at [portcheck.komodai.com](https://portcheck.komodai.com
 4. Build using `go build .` and run!
 
 Optionally adjust:
-- Modify ratelimits.
-- Adjust log location and rollover size.
-- Change restricted ports.
+- Ratelimits.
+- Log location and rollover size.
+- Restricted ports.
 
-All these settings can be tweaked within `main.go`.
+All these settings can be found in `main.go`.
